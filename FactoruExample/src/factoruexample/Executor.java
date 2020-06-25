@@ -22,27 +22,36 @@ public class Executor {
     Random r = new Random();
     Timer timer = new Timer();
     Recorder rr = new Recorder();
+    int itterations = 280;
+    int amountOfBooksInLib = 350;
+    int returns = 30;
     public void execute() {
-        
         library.LibraryAggregate();
-        for(int i = 0;i < 350; i++) {
+        for(int i = 0;i < amountOfBooksInLib; i++) {
             librarian.registrateUser1(uf.usersArray.get(r.nextInt(uf.usersArray.size()-1)));
         }
-        for(int i = 0;i < 300; i++) {
+        for(int i = 0;i < itterations; i++) {
             Bookable b = Manipulator.BookDataManipulator.bookList.get(r.nextInt(Manipulator.BookDataManipulator.bookList.size()-1));
             Journal j = Manipulator.journals.get(r.nextInt(Manipulator.journals.size()-1));
-            User u = uf.usersArray.get(r.nextInt(uf.usersArray.size()-1));
-             librarian.giveJournal(u , j);
-             librarian.givebook(u, b);
-//            timer.checkTimeOfRecod(Recorder.findRecord(b, u)); 
-
-           // timer.checkTimeOfRecod(rr.findRecord(b, u)); 
-         //   timer.checkTimeOfRecod(rr.findRecord(j, u)); 
+            User u1 = uf.usersArray.get(r.nextInt(uf.usersArray.size()-1));
+            User u2 = uf.usersArray.get(r.nextInt(uf.usersArray.size()-1));
+             librarian.giveJournal(u1 , j);
+             librarian.givebook(u2, b);
+             //librarian.takebook(Recorder.recordList.get(r.nextInt(Recorder.recordList.size())).getUser(), Recorder.recordList.get(r.nextInt(Recorder.recordList.size())).getBook());
+             //librarian.takeJournal(Recorder.recordList.get(r.nextInt(Recorder.recordList.size())).getUser(), Recorder.recordList.get(r.nextInt(Recorder.recordList.size())).getJournal());
         }
+        
+      for (int i = 0; i < returns; i++ ) {
+           int l = r.nextInt(Recorder.recordList.size()-1);
+           int ll = r.nextInt(Recorder.recordList.size()-1);
+             librarian.takebook(Recorder.recordList.get(l).getUser(), Recorder.recordList.get(l).getBook());
+             librarian.takeJournal(Recorder.recordList.get(ll).getUser(), Recorder.recordList.get(ll).getJournal());
+        }
+         
         for(int i = 0;i < Recorder.recordList.size(); i++) {
-          // librarian.giveJournal(uf.usersArray.get(r.nextInt(uf.usersArray.size()-1)), Manipulator.journals.get(r.nextInt(Manipulator.journals.size()-1)));
            timer.checkTimeOfRecod(Recorder.recordList.get(i)); 
         }
+        
     }
     public void executeSQL() {  
       sql.setConnectionParams("jdbc:mysql://localhost/?useUnicode=true&serverTimezone=UTC", "root", "gfijr179");

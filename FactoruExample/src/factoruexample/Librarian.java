@@ -5,6 +5,7 @@
  */
 package factoruexample;
 
+import static factoruexample.Reserver.reserveList;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Random;
@@ -14,8 +15,7 @@ import java.util.Scanner;
  *
  * @author pavel1709
  */
-public class Librarian {
-      //Date date;     
+public class Librarian {   
     static ArrayList<User> registratedUsers = new ArrayList<>();
     Library lib = new Library();
     Debter debter = new Debter();
@@ -36,16 +36,13 @@ public class Librarian {
             }     
     }
     void registrateUser1(User user) {
-  
-                     if(!registratedUsers.contains(user)) 
-                       registratedUsers.add(user);
+        if(!registratedUsers.contains(user)) 
+            registratedUsers.add(user);
                     
     }
     boolean checkReg(User user) {
         if (registratedUsers.contains(user))
-          
             return true;
-                 //}
         else
             return false;
     }
@@ -79,12 +76,11 @@ public class Librarian {
         if (checkReg(user)) {
            if (!checkDebt(user)) {
                if (lookForBook(book)) { 
-                   if (!Reserver.reserveList.isEmpty() && !Reserver.checkReserve(book)) {
+                   if ( !Reserver.checkReserve(book)) {
                        user.takeBook(book);
                        Recorder.addRecord( user,book, date);
-                       lib.takeBook(book);
-                       
-                      
+                       Library.takeBook(book);
+  
                    }
                    else {
                        System.out.println("Просим прощения, данная книга уже зарезервирована. Хотите взять другую книгу?");
@@ -100,9 +96,10 @@ public class Librarian {
                    Scanner s = new Scanner(System.in);
                    String ss = s.nextLine();
                    if ((ss.equals("да") || ss.equals("Да")|| ss.equals("ДА")||ss.equals("Д")||ss.equals("д")|| ss.equals("Y")||ss.equals("y")|| ss.equals("Yes")|| ss.equals("yes") || ss.equals("YES"))) {
-                       if(!Reserver.checkReserve(book)) {
-                        r.addReservation(user, book, date);
+                       if( !Reserver.checkReserve(book)) {
+                        Reserver.addReservation(user, book, date);
                        }
+                      
                        else {
                            System.out.println("Просим прощения, данная книга уже зарезервирована. Хотите взять другую книгу?");
                            Scanner sss = new Scanner(System.in);
@@ -132,10 +129,10 @@ public class Librarian {
              givebook(user,book);
             }
               
-            }
+        }
         
     }
-     public void giveJournal( User user, Journal journal) {
+     public  void giveJournal( User user, Journal journal) {
            h += rand.nextInt(7300000);
            long ll = 9999999999l;
           Date date = new Date(System.currentTimeMillis() - ll + h);
@@ -145,8 +142,7 @@ public class Librarian {
                    if (!Reserver.checkReserve(journal)) {
                        user.takeJournal(journal);
                        Recorder.addRecord( user,journal, date);
-                       lib.takeJournal(journal);
-//                       timer.checkTimeOfRecod(rr.findRecord(journal, user)); 
+                       Library.takeJournal(journal);
                    }
                    else {
                        System.out.println("Просим прощения, данный журнал уже зарезервирован. Хотите взять другой ?");
@@ -163,16 +159,16 @@ public class Librarian {
                    String ss = s.nextLine();
                    if ((ss.equals("да") || ss.equals("Да")|| ss.equals("ДА")||ss.equals("Д")||ss.equals("д")|| ss.equals("Y")||ss.equals("y")|| ss.equals("Yes")|| ss.equals("yes") || ss.equals("YES"))) {
                        if(!Reserver.checkReserve(journal)) {
-                        r.addReservation(user, journal, date);
+                        Reserver.addReservation(user, journal, date);
                        }
                        else {
                            System.out.println("Просим прощения, данный журнал уже зарезервирован . Хотите взять другой?");
                            Scanner sss = new Scanner(System.in);
                             String ssss = sss.nextLine();
-                            Journal l = Manipulator.journals.get(rand.nextInt(Manipulator.journals.size()));
+                           // Journal l = Manipulator.journals.get(rand.nextInt(Manipulator.journals.size()));
                             if (ssss.equals("да") || ssss.equals("Да")|| ssss.equals("ДА")||ssss.equals("Д")||ssss.equals("д")|| ssss.equals("Y")||ssss.equals("y")|| ssss.equals("Yes")|| ssss.equals("yes") || ssss.equals("YES")) {
-                             giveJournal(user,l);
-                             Recorder.addRecord( user,l,date);
+                             giveJournal(user,Manipulator.journals.get(rand.nextInt(Manipulator.journals.size())));
+                             Recorder.addRecord( user,Manipulator.journals.get(rand.nextInt(Manipulator.journals.size())),date);
                             }
                        }
                    }
@@ -183,26 +179,26 @@ public class Librarian {
            }
            
         }
-        else {
-            
-                 
+        else {   
             System.out.println(user.getName()+" " + user.getPatronim()+" "+user.getSurname() + " не зарегистрирован в библиотеке, зарегистрировать?(да или нет)");
             Scanner s = new Scanner(System.in);
             String ss = s.nextLine();
-                   if ((ss.equals("да") || ss.equals("Да")|| ss.equals("ДА")||ss.equals("Д")||ss.equals("д")|| ss.equals("Y")||ss.equals("y")|| ss.equals("Yes")|| ss.equals("yes") || ss.equals("YES"))) {
+            if ((ss.equals("да") || ss.equals("Да")|| ss.equals("ДА")||ss.equals("Д")||ss.equals("д")|| ss.equals("Y")||ss.equals("y")|| ss.equals("Yes")|| ss.equals("yes") || ss.equals("YES"))) {
              registrateUser1(user);
              giveJournal(user,journal);
             }
               
-            }
+        }
         
     }
-    public void takebook( User user, Bookable book) {
+    public static void takebook( User user, Bookable book) {
         user.returnBook(book);
-        lib.returnBook(book);
+        Library.returnBook(book);
+     
     }
-    public void takeJournal( User user, Journal journal) {
+    public static void takeJournal( User user, Journal journal) {
         user.returnJournal(journal);
-        lib.returnJournal(journal);
+        Library.returnJournal(journal);
+     
     }
 }

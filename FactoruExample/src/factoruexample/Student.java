@@ -64,11 +64,6 @@ public class Student extends User {
          public static void generateSurNameListForMen()  {
            ip = new ImportPeople();
         SurNameListForMen = new ArrayList<String>();
-         /* try {
-              ip.ImportStudentsSurNames();
-          } catch (IOException ex) {
-              Logger.getLogger(Teacher.class.getName()).log(Level.SEVERE, null, ex);
-          } */
         for (String surnames: ImportPeople.studentsSurnames ) {
             switch(surnames.charAt(surnames.length()-1)) {
                 case 'в' : SurNameListForMen.add(surnames);
@@ -92,18 +87,12 @@ public class Student extends User {
                 case 'ц':  SurNameListForMen.add(surnames);
                 break;
             }
-       // SurNameListForMen.add(surnames);
         }
        
     }
          public static void generateSurNameListForWomen()  {
            ip = new ImportPeople();
         SurNameListForWomen = new ArrayList<String>();
-        /*  try {
-              ip.ImportStudentsSurNames();
-          } catch (IOException ex) {
-              Logger.getLogger(Teacher.class.getName()).log(Level.SEVERE, null, ex);
-          }*/
         for (String surnames: ImportPeople.studentsSurnames ) {
             switch(surnames.charAt(surnames.length()-1)) {
                 case 'в' : SurNameListForWomen.add(surnames+ "a");
@@ -127,7 +116,6 @@ public class Student extends User {
                 case 'ц':  SurNameListForWomen.add(surnames);
                 break;
             }
-        //SurNameListForMen.add(surnames);
         }
        
     }
@@ -136,7 +124,6 @@ public class Student extends User {
         generateSurNameListForMen();
         generateSurNameListForWomen();
         String s ="";
-       // double rn = Math.random()*SurNameListForMen.size();
         switch (User.NameList.get(User.rni).charAt(User.NameList.get(User.rni).length()-1)) {
               case('а') : {
         double rn = Math.random()*SurNameListForWomen.size();

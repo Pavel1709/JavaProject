@@ -30,9 +30,7 @@ public class RussianFiction implements Fiction{
    RussianFiction ( ) {
        setName(generateName());
        setAuthor(generateAuthor());
-       removeAll();
-      // System.err.println("Создана русская художественная литература c названием," +"'"+ name +"'"+" автор: " + author);
-    
+       removeAll();    
    }
    @Override
     public void setName(String name) {
@@ -55,13 +53,6 @@ public class RussianFiction implements Fiction{
     @Override
     public void generateNameandAuthorList() {
         ib = new ImportBooks();
-       /* try {
-           ib.ImportRussianFictionName();
-           ib.ImportRussianFictionAuthor();
-        } catch (IOException ex) {
-            Logger.getLogger(RussianFiction.class.getName()).log(Level.SEVERE, null, ex);
-        } */
-        
         nameList = new ArrayList<String>();
         authorList = new ArrayList<String>();
 
@@ -72,7 +63,6 @@ public class RussianFiction implements Fiction{
     }
    @Override
     public String generateName() {
-       // generateNameandAuthorList();
         w =new WeibullDistribution(1, 50);
         i = (int)Math.floor(w.sample()); 
          return nameList.get(i%nameList.size());

@@ -94,14 +94,14 @@ public class SQLconnector {
      Debter.debtList.forEach(d-> {
          if (d.getBook()   == null) {
              try {
-                 statement2.executeUpdate("INSERT INTO FactoruExample.Debts(User, Book) VALUES ('"+ d.getUser().name +" "+d.getUser().patronim + d.getUser().surname+ "','" +d.getJournal().getName()+" " + d.getJournal().volume +" "+ d.getJournal().year+"')");
+                 statement2.executeUpdate("INSERT INTO FactoruExample.Debts(User, Book) VALUES ('"+ d.getUser().name +" "+d.getUser().patronim+" "+ d.getUser().surname+ "','" +d.getJournal().getName()+" " + d.getJournal().volume +" "+ d.getJournal().year+"')");
              } catch (SQLException ex) {
                  Logger.getLogger(SQLconnector.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
          else {
              try {
-                 statement2.executeUpdate("INSERT INTO FactoruExample.Debts(User, Book) VALUES ('"+ d.getUser().name +" "+d.getUser().patronim + d.getUser().surname+ "','" +d.getBook().getName()+" " + d.getBook().getAuthor()+"')");
+                 statement2.executeUpdate("INSERT INTO FactoruExample.Debts(User, Book) VALUES ('"+ d.getUser().name +" "+d.getUser().patronim +" "+ d.getUser().surname+ "','" +d.getBook().getName()+" " + d.getBook().getAuthor()+"')");
              } catch (SQLException ex) {
                  Logger.getLogger(SQLconnector.class.getName()).log(Level.SEVERE, null, ex);
              }
@@ -111,14 +111,14 @@ public class SQLconnector {
     {
         if(r.getBook() == null)  {
             try {
-                statement2.executeUpdate("INSERT INTO FactoruExample.Reserves(User, Book, Date) VALUES ('"+ r.getUser().name +" "+r.getUser().patronim + r.getUser().surname+ "','" +r.getJournal().getName()+" " + r.getJournal().volume +" "+ r.getJournal().year+ "','" +r.getDate()+"')");
+                statement2.executeUpdate("INSERT INTO FactoruExample.Reserves(User, Book, Date) VALUES ('"+ r.getUser().name +" "+r.getUser().patronim +" "+ r.getUser().surname+ "','" +r.getJournal().getName()+" " + r.getJournal().volume +" "+ r.getJournal().year+ "','" +r.getDate()+"')");
             } catch (SQLException ex) {
                 Logger.getLogger(SQLconnector.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else {
             try {
-                statement2.executeUpdate("INSERT INTO FactoruExample.Reserves(User, Book, Date) VALUES ('"+ r.getUser().name +" "+r.getUser().patronim + r.getUser().surname+ "','" +r.getBook().getName()+" " + r.getBook().getAuthor()+"','"+r.getDate()+"')");
+                statement2.executeUpdate("INSERT INTO FactoruExample.Reserves(User, Book, Date) VALUES ('"+ r.getUser().name +" "+r.getUser().patronim +" "+ r.getUser().surname+ "','" +r.getBook().getName()+" " + r.getBook().getAuthor()+"','"+r.getDate()+"')");
             } catch (SQLException ex) {
                 Logger.getLogger(SQLconnector.class.getName()).log(Level.SEVERE, null, ex);
             }

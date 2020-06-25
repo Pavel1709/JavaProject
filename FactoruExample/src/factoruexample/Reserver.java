@@ -15,19 +15,19 @@ import java.sql.Date;
 public class Reserver {
      
      static ArrayList<Reserve> reserveList = new ArrayList<>();
-     public void addReservation(User user, Bookable book, Date date) {
+     public static void addReservation(User user, Bookable book, Date date) {
       reserveList.add(new Reserve( user, book, date));
      }
-     public void addReservation(User user, Journal journal, Date date ) {
+     public static void addReservation(User user, Journal journal, Date date ) {
       reserveList.add(new Reserve( user, journal, date ));
      }
-     public void removeReservation(User user, Bookable book ) {
+     public static void removeReservation(User user, Bookable book ) {
       reserveList.remove(findReserve(user, book));
      }
-     public void removeReservation(User user, Journal journal) {
+     public static void removeReservation(User user, Journal journal) {
       reserveList.remove(findReserve(user, journal));
      }
-     int findReserve(User user, Bookable book) {
+     static int  findReserve(User user, Bookable book) {
         for (int i=0;i < reserveList.size(); i++ ) {
           if  ((reserveList.get(i).getUser().equals(user) && (reserveList.get(i).getBook().equals(book) ) )) {
               return i;
@@ -36,7 +36,7 @@ public class Reserver {
         }
           return -1;
     }
-     int findReserve(User user, Journal journal) {
+     static int findReserve(User user, Journal journal) {
         for (int i=0;i < reserveList.size(); i++ ) {
           if  ((reserveList.get(i).getUser().equals(user) && (reserveList.get(i).getJournal().equals(journal) ) )) {
               return i;
@@ -47,19 +47,23 @@ public class Reserver {
     }
      
      static boolean checkReserve(Bookable book) {
+         if (!reserveList.isEmpty()) 
         for (int i = 0; i <reserveList.size(); i++ ) {
-         if  (reserveList.get(i).getBook().equals(book)) {
+         if  (reserveList.get(i).getJournal() == null && reserveList.get(i).getBook().getName().equals(book.getName())) {
           return true;
         }          
      }
+         
      return false;
     }
      static boolean checkReserve(Journal journal) {
+           if (!reserveList.isEmpty()) 
         for (int i = 0; i <reserveList.size(); i++ ) {
-         if  (reserveList.get(i).getBook().equals(journal)) {
+         if  (reserveList.get(i).getBook() == null && reserveList.get(i).getJournal().getName().equals(journal.getName()) && reserveList.get(i).getJournal().getYear()==journal.getYear()&& reserveList.get(i).getJournal().getVolume()==journal.getVolume() ) {
           return true;
         }          
      }
+           
      return false;
     }
 }

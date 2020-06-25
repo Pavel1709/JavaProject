@@ -14,7 +14,6 @@ import java.util.ArrayList;
  */
 public class Manipulator {
     ArrayList<User> users ;
-   // ArrayList<Books> Books;
     ArrayList<Record> Records;
     ArrayList<Journal> Journals;
     Student st;
@@ -85,11 +84,9 @@ public class Manipulator {
     public ArrayList<Journal> createThematicalJournals(JournalDirector JD) {
         
     ArrayList<Journal> thematicalJournals = new ArrayList<Journal>();
-    
-   // ArrayList<Journal> AstronomicalJournals = new ArrayList<Journal>();
     while (! JD.isJournalsIsOver()) {
-    JD.createJournal();
-    thematicalJournals.add(JD.getJournal());
+     JD.createJournal();
+     thematicalJournals.add(JD.getJournal());
     } 
     return thematicalJournals;
             }

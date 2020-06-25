@@ -62,7 +62,6 @@ public abstract class User {
    
   public static void generateNameList() throws IOException {
       ip = new ImportPeople();
-    //  ip.ImportNames();
         NameList = new ArrayList<String>();
        for (int i = 0; i<29; i++) {
        NameList.add(ImportPeople.names[i] ); 
@@ -80,11 +79,6 @@ public abstract class User {
          return NameList.get(rni);
     }
 
-  
-         //  public abstract void generateSurNameList();
-         //  public abstract String generateSurName() ;
-  
-           
            
     public static int generateID() {
         int newID=globalID;

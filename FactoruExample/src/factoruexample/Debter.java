@@ -14,10 +14,14 @@ import java.util.ArrayList;
 public class Debter {
     static ArrayList<Debt> debtList = new ArrayList<>();
     void addDebt(User user, Bookable book) {
+        if (user.books.contains(book)) {
         debtList.add(new Debt(user, book));
+     }
     }
     void addDebt(User user, Journal journal) {
+        if (user.books.contains(journal)) {
         debtList.add(new Debt(user, journal));
+        }
     }
     int findDebt(User user, Bookable book) {
         for (int i=0;i < debtList.size(); i++ ) {

@@ -20,19 +20,17 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  * @author pavel1709
  */
 public class ImportBooks {
-    
-    //ArrayList nums = new ArrayList();
-//HashMap MyExport = new HashMap <String, String[]>();
-static String[] russianFictionNames;
-static String[] russianTextBookNames;
-static String[] englishTextBookNames;
-static String[] englishFictionNames;
-static String[] russianFictionAuthors;
-static String[] russianTextBookAuthors;
-static String[] englishTextBookAuthors;
-static String[] englishFictionAuthors;
-static String[] englishTextBookUniversities;
-static String[] englishTextBookLevels;
+
+ static String[] russianFictionNames;
+ static String[] russianTextBookNames;
+ static String[] englishTextBookNames;
+ static String[] englishFictionNames;
+ static String[] russianFictionAuthors;
+ static String[] russianTextBookAuthors;
+ static String[] englishTextBookAuthors;
+ static String[] englishFictionAuthors;
+ static String[] englishTextBookUniversities;
+ static String[] englishTextBookLevels;
     public void ImportRussianFictionName() throws FileNotFoundException, IOException {
         
      Path file_path=FileSystems.getDefault().getPath("Books.xls"); //filesystems-работа со всеми файлами компьютера,getDefaul-смотрим папку, где находится наша прога, getpath-получаем путь к ней
@@ -94,13 +92,11 @@ static String[] englishTextBookLevels;
         }
     }
     }
-    public void ImportEnglishFictionAuthor() throws FileNotFoundException, IOException {
-        
+    public void ImportEnglishFictionAuthor() throws FileNotFoundException, IOException {  
      Path file_path=FileSystems.getDefault().getPath("Books.xls"); //filesystems-работа со всеми файлами компьютера,getDefaul-смотрим папку, где находится наша прога, getpath-получаем путь к ней
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("EnglishFiction");
-     int rowCount=MySheet.getPhysicalNumberOfRows();
-     
+     int rowCount=MySheet.getPhysicalNumberOfRows();    
      HSSFRow headers=MySheet.getRow(0);
      for(int i=1;i<headers.getPhysicalNumberOfCells();i++) {
          HSSFCell header=headers.getCell(i);
@@ -119,7 +115,6 @@ static String[] englishTextBookLevels;
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("EnglishTextBook");
      int rowCount=MySheet.getPhysicalNumberOfRows();
-     
      HSSFRow headers=MySheet.getRow(0);
      for(int i=0;i<headers.getPhysicalNumberOfCells()-3;i++) {
          HSSFCell header=headers.getCell(i);
@@ -138,7 +133,6 @@ static String[] englishTextBookLevels;
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("EnglishTextBook");
      int rowCount=MySheet.getPhysicalNumberOfRows();
-     
      HSSFRow headers=MySheet.getRow(0);
      for(int i=1;i<headers.getPhysicalNumberOfCells()-2;i++) {
          HSSFCell header=headers.getCell(i);
@@ -156,8 +150,7 @@ static String[] englishTextBookLevels;
      Path file_path=FileSystems.getDefault().getPath("Books.xls"); //filesystems-работа со всеми файлами компьютера,getDefaul-смотрим папку, где находится наша прога, getpath-получаем путь к ней
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("EnglishTextBook");
-     int rowCount=MySheet.getPhysicalNumberOfRows();
-     
+     int rowCount=MySheet.getPhysicalNumberOfRows();   
      HSSFRow headers=MySheet.getRow(0);
      for(int i=2;i<headers.getPhysicalNumberOfCells()-1;i++) {
          HSSFCell header=headers.getCell(i);
@@ -170,13 +163,11 @@ static String[] englishTextBookLevels;
          }
     }
     }
-     public void ImportEnglishTextBookLevel() throws FileNotFoundException, IOException {
-        
+     public void ImportEnglishTextBookLevel() throws FileNotFoundException, IOException { 
      Path file_path=FileSystems.getDefault().getPath("Books.xls"); //filesystems-работа со всеми файлами компьютера,getDefaul-смотрим папку, где находится наша прога, getpath-получаем путь к ней
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("EnglishTextBook");
-     int rowCount=MySheet.getPhysicalNumberOfRows();
-     
+     int rowCount=MySheet.getPhysicalNumberOfRows();    
      HSSFRow headers=MySheet.getRow(0);
      for(int i=3;i<headers.getPhysicalNumberOfCells();i++) {
          HSSFCell header=headers.getCell(i);
@@ -194,8 +185,7 @@ static String[] englishTextBookLevels;
      Path file_path=FileSystems.getDefault().getPath("Books.xls"); //filesystems-работа со всеми файлами компьютера,getDefaul-смотрим папку, где находится наша прога, getpath-получаем путь к ней
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("RussianTextBook");
-     int rowCount=MySheet.getPhysicalNumberOfRows();
-     
+     int rowCount=MySheet.getPhysicalNumberOfRows();  
      HSSFRow headers=MySheet.getRow(0);
      for(int i=0;i<headers.getPhysicalNumberOfCells()-1;i++) {
          HSSFCell header=headers.getCell(i);
@@ -213,8 +203,7 @@ static String[] englishTextBookLevels;
      Path file_path=FileSystems.getDefault().getPath("Books.xls"); //filesystems-работа со всеми файлами компьютера,getDefaul-смотрим папку, где находится наша прога, getpath-получаем путь к ней
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("RussianTextBook");
-     int rowCount=MySheet.getPhysicalNumberOfRows();
-     
+     int rowCount=MySheet.getPhysicalNumberOfRows();     
      HSSFRow headers=MySheet.getRow(0);
      for(int i=1;i<headers.getPhysicalNumberOfCells();i++) {
          HSSFCell header=headers.getCell(i);

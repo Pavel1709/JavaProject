@@ -33,7 +33,6 @@ abstract public class JournalBuilder {
     }
     
     public abstract void createJName();      
-   // public abstract void createJVolume();
     
     protected abstract void tickCounter();
    

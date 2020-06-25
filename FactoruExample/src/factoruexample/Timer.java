@@ -14,28 +14,20 @@ import java.util.Date;
 public class Timer {
     Debter d = new Debter();
     Date dd = new Date();
+    long raz = (long) 9e+9;
     public void checkTimeOfRecod(Record r) {
-        
-       // Recorder.recordList.forEach((r) -> {
-            if (r.getDate().getTime() <  (dd.getTime()-1) ) {
+
+            if (r.getDate().getTime() <  (dd.getTime()-raz) ) {
                 
                 if (r.getBook()  != null) {
-                   
-                   // Debter.debtList.forEach(i-> { 
-                        //Debter.debtList.stream().filter(b -> (!b.user.getName().equals(r.user.getName()))).forEach(b -> d.addDebt(r.getUser(), r.getBook()));
-                  //      if ( (checkUser(r, b)) && (checkBook(r, b))) {
                              d.addDebt(r.getUser(), r.getBook());
                         
                 }
            
-            else {
-              //  Debter.debtList.forEach(i-> {
-                    
-                   // if ( (checkUser(r, i)) && (checkJournal(r , i))) {
+                else {
                         d.addDebt(r.getUser(), r.getJournal());
-                  //  }});
-            }
-       // });
+
+                }
             }
         }
     public boolean checkUser(Debt r, Debt i) {

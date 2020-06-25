@@ -200,21 +200,23 @@ public class LibFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
       static  Executor exe = new Executor();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      Manipulator DM= new Manipulator();
         try {
+            Manipulator DM= new Manipulator();
+           
             DM.generateData();
-        } catch (IOException ex) {
-            Logger.getLogger(LibFrame.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Данные не импортированы");
-        }
-        try {
             DM.initialize();
-        } catch (IOException ex) {
+            exe.execute();
+            }catch (java.lang.NullPointerException ex) {
+               System.out.println("Данные не импортированы");
+             } catch (IOException ex) {
             Logger.getLogger(LibFrame.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Данные не импортированы");
         }
-         
-          exe.execute();
+             
+            
+            
+            
+            // exe.execute();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -222,7 +224,7 @@ public class LibFrame extends javax.swing.JFrame {
         exe.executeSQL();
      }
      catch(Exception e) {
-         System.out.println("Данные не экспортированы или не сгенерированы");
+         System.out.println("Данные не импортированы или не сгенерированы");
      }
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -25,22 +25,36 @@ public class Recorder {
      }
      public static Record findRecord(Bookable book,User user) {
         
-         for (int rh = 0; rh <  recordList.size() ; rh++) {
+         for (int rh = 0; rh <  recordList.size()  ; rh++) {
              if (checkBook(rh , book) && checkUser(rh, user)) {
-              //    System.out.println(recordList.get(rh).getBook().getName());
                  return recordList.get(rh) ;
              }
          }
          return null;
      }
-     public Record findRecord(Journal journal,User user) {
+     public static Record findRecord(Journal journal,User user) {
          for (int ih = 0; ih <  recordList.size(); ih++) {
              if (checkJournal(ih , journal) && checkUser(ih, user)) {
-//                 System.out.println(recordList.get(ih).getBook().getName());
                  return recordList.get(ih) ;
              }
          }
          return null;
+     }
+     public static int findRecords(Journal journal,User user) {
+         for (int ih = 0; ih <  recordList.size(); ih++) {
+             if (checkJournal(ih , journal) && checkUser(ih, user)) {
+                 return  ih;
+             }
+         }
+         return -1;
+     }
+      public static int findRecords(Bookable book,User user) {
+         for (int ih = 0; ih <  recordList.size(); ih++) {
+             if (checkBook(ih , book) && checkUser(ih, user)) {
+                 return  ih;
+             }
+         }
+         return -1;
      }
      public static boolean checkUser(int i, User user) {
          if  (recordList.get(i).getUser().getName().equals(user.getName()) ) {
@@ -55,7 +69,7 @@ public class Recorder {
      public static boolean checkBook(int i, Bookable book) {
          return recordList.get(i).getBook().getName().equals(book.getName());
     }
-       public boolean checkJournal(int i, Journal journal) {
+       public static boolean checkJournal(int i, Journal journal) {
          if  (recordList.get(i).getJournal().getName().equals(journal.getName())  ) {
             if (recordList.get(i).getJournal().getYear() == journal.getYear() ) {
                 if(recordList.get(i).getJournal().getVolume() == journal.getVolume()) {

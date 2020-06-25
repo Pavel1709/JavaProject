@@ -53,12 +53,6 @@ public class EnglishFiction implements Fiction {
     @Override
     public void generateNameandAuthorList() {
         ib = new ImportBooks();
-       /* try {
-           ib.ImportEnglishFictionName();
-           ib.ImportEnglishFictionAuthor();
-        } catch (IOException ex) {
-            Logger.getLogger(EnglishFiction.class.getName()).log(Level.SEVERE, null, ex);
-        } */
         nameList = new ArrayList<String>();
         authorList = new ArrayList<String>();
         for (int i = 0; i < ImportBooks.englishFictionNames.length; i++ ) {
@@ -68,7 +62,6 @@ public class EnglishFiction implements Fiction {
     }
     @Override
     public String generateName() {
-         //generateNameandAuthorList();
         w =new WeibullDistribution(1, 50);
         
          i = (int)Math.floor(w.sample()); 

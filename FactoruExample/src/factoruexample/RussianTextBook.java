@@ -51,12 +51,6 @@ public class RussianTextBook implements TextBook {
     @Override
     public void generateNameandAuthorList() {
         ib = new ImportBooks();
-      /*  try {
-           ib.ImportRussianTextBookName();
-           ib.ImportRussianTextBookAuthor();
-        } catch (IOException ex) {
-            Logger.getLogger(RussianTextBook.class.getName()).log(Level.SEVERE, null, ex);
-        } */
         nameList = new ArrayList<String>();
         authorList = new ArrayList<String>();
         for (int i = 0; i < ib.russianTextBookNames.length; i++ ) {
@@ -66,7 +60,6 @@ public class RussianTextBook implements TextBook {
     }
     @Override
     public String generateName() {
-       // generateNameandAuthorList();
         double rn = Math.random()*nameList.size();
         
           rni = (int) Math.floor(rn) ;

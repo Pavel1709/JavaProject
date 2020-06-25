@@ -122,22 +122,12 @@ public class EnglishTextBook implements TextBook {
        
     }
     public String generateUniversity() {
-      //   generateUniversitiesAndLevelsList() ;
-      //  double rn = Math.random()*nameList.size();
-        
-      //   int rni = (int) Math.floor(rn) ;
-       //   if (rni == 20) {
-       //       rni = 19;
-       //   }
-         return universityList.get(rni);
-         
+         return universityList.get(rni);     
     }
 
      public String generateLevel() {
-        // generateUniversitiesAndLevelsList() ;
-         return levelList.get(rni);
-       
-    }
+         return levelList.get(rni);   
+     }
     
     @Override
     public String generateAuthor() {

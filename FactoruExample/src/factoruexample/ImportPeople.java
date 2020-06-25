@@ -24,18 +24,15 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  * @author pavel1709
  */
 public class ImportPeople {
-    //ArrayList nums = new ArrayList();
-//HashMap MyExport = new HashMap <String, String[]>();
-static String[] studentsSurnames;
-static String[] teachersSurnames;
-static public String[] names;
+    static String[] studentsSurnames;
+    static String[] teachersSurnames;
+    static public String[] names;
     public void ImportNames() throws FileNotFoundException, IOException {
         
      Path file_path=FileSystems.getDefault().getPath("NamesAndSurnames.xls"); //filesystems-работа со всеми файлами компьютера,getDefaul-смотрим папку, где находится наша прога, getpath-получаем путь к ней
      HSSFWorkbook myBook= new HSSFWorkbook(new FileInputStream(file_path.toString()));
      HSSFSheet MySheet= myBook.getSheet("Names");
-     int rowCount=MySheet.getPhysicalNumberOfRows();
-     
+     int rowCount=MySheet.getPhysicalNumberOfRows();     
      HSSFRow headers=MySheet.getRow(0);
      for(int i=0;i<headers.getPhysicalNumberOfCells();i++) {
          HSSFCell header=headers.getCell(i);
@@ -46,7 +43,6 @@ static public String[] names;
              names[k]=MySheet.getRow(j).getCell(i).getStringCellValue();
              k++;
          }
-       //  MyExport.put(ColName, names);
      }
 
     }
@@ -67,7 +63,6 @@ static public String[] names;
              teachersSurnames[k]=MySheet1.getRow(n).getCell(l).getStringCellValue();
              k++;
          }
-      //   MyExport.put(ColName, teachersSurnames);
      }
 
     }
@@ -88,7 +83,6 @@ static public String[] names;
              studentsSurnames[k]=MySheet1.getRow(n).getCell(l).getStringCellValue();
              k++;
          }
-         //MyExport.put(ColName, studentsSurnames);
      }
 
     }
